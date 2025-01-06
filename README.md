@@ -9,14 +9,14 @@
 
 
 
-Hyperlane software - catch the last carriage 🚂
+# Hyperlane software - catch the last carriage 🚂
 
 I think everyone has heard about this project by now, it's been flashed in the infopole a lot all this year. And I found a scrolling scenario that very few people are touched by.
 
-💯 By the numbers:
+## 💯 Few analytics:
 ~670k users who mostly used EVM networks, mostly Arbitrum and Polygon. And what I noticed: almost no one uses Solapa, namely 2.5% trans out of the network and 1.5% into the network. I think this is the best option for scrolling at the moment: there is almost no competition and therefore the criteria in solana will be minimal.
 
-📱 What the software does: 
+## 📱 What the software does: 
 
 🟢Bridges USDC from Solana to Eclipse on Usenexus. (https://www.usenexus.org/)
 🟢Bridges ETH from Base to Eclipse on Gas.zip. (https://www.gas.zip/)
@@ -26,6 +26,15 @@ I think everyone has heard about this project by now, it's been flashed in the i
 As you can see Eclipse is also touched on here, so if you work it out too, you get to kill two birds with one stone. 
 
 I'm going to spin my wallets that Phoniex was spinning on. This project can also be scrolled with the help of our software (https://t.me/hcmarket_bot?start=project_1021). And we decided to make a small discount for purchasing two software at once: Phoenix and Hyperlane.
+
+---
+
+ ## For Wallet Generation you can use: [Kozel App](https://github.com/dry-com/kozel)
+
+For information about Kozel and how to use you can find here - https://t.me/hcmarket_bot?start=project_1
+
+---
+
 
 
 
