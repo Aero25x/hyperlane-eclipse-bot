@@ -25,7 +25,7 @@ I think everyone has heard about this project by now, it's been flashed in the i
 
 As you can see Eclipse is also touched on here, so if you work it out too, you get to kill two birds with one stone. 
 
-I'm going to spin my wallets that Phoniex was spinning on. This project can also be scrolled with the help of our software (https://t.me/hcmarket_bot?start=project_1021). And we decided to make a small discount for purchasing two software at once: Phoenix and Hyperlane.
+I'm going to spin my wallets that Phoniex was spinning on. This project can also be scrolled with the help of our software (https://t.me/hcmarket_bot?start=project_1021)
 
 ---
 
