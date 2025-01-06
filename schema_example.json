@@ -1,0 +1,72 @@
+[
+  {
+    "action": "usenexus",
+    "market_id": "https://www.usenexus.org/",
+    "order": "Market",
+    "type": "Buy",
+    "min_delay": 300,
+    "max_delay": 1500,
+    "token0": "USDC",
+    "token1": "USDC",
+    "network0": "Solana",
+    "network1": "Eclipse",
+    "percentage_min": 100,
+    "percentage_max": 100
+  },
+  {
+    "action": "gaszip",
+    "market_id": "gasZip",
+    "order": "Send",
+    "type": "Buy",
+    "min_delay": 600,
+    "max_delay": 1200,
+    "token0": "ETH",
+    "token1": "ETH",
+    "network1": "BASE",
+    "network0": "Eclipse",
+    "min_amount": 0.0014,
+    "max_amount": 0.0017999999999999
+  },
+  {
+    "action": "lifinity",
+    "market_id": "https://eclipse.lifinity.io/swap",
+    "order": "Market",
+    "type": "Buy",
+    "min_delay": 10,
+    "max_delay": 20,
+    "token0": "USDC",
+    "token1": "SOL",
+    "network": "Eclipse",
+    "network0": "Eclipse",
+    "percentage_min": 100,
+    "percentage_max": 100
+  },
+  {
+    "action": "lifinity",
+    "market_id": "https://eclipse.lifinity.io/swap",
+    "order": "Market",
+    "type": "Buy",
+    "min_delay": 10,
+    "max_delay": 20,
+    "token0": "SOL",
+    "token1": "USDC",
+    "network": "Eclipse",
+    "network0": "Eclipse",
+    "percentage_min": 100,
+    "percentage_max": 100
+  },
+  {
+    "action": "usenexus",
+    "market_id": "https://www.usenexus.org/",
+    "order": "Market",
+    "type": "Buy",
+    "min_delay": 10,
+    "max_delay": 20,
+    "token1": "USDC",
+    "token0": "USDC",
+    "network1": "Solana",
+    "network0": "Eclipse",
+    "percentage_min": 100,
+    "percentage_max": 100
+  }
+]

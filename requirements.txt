@@ -1,0 +1,10 @@
+telethon==1.35.0
+nodriver==0.38
+websockets==13.1
+pyzbar==0.1.9
+pillow==10.3.0
+tqdm
+mitmproxy==10.3.0
+requests
+web3
+base58
