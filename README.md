@@ -71,6 +71,13 @@ run app
 make run-new
 ```
 
+---
+
+# [Have questions about configuration or how to run? Ask them here](https://t.me/hidden_coding)
+https://t.me/hidden_coding
+
+---
+
 
 
 [![Join our Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/hidden_coding)
