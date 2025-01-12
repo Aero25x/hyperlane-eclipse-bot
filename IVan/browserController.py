@@ -1,8 +1,3 @@
-# Created by Aero25x
-# For HiddenCode
-# https://t.me/hidden_coding
-
-
 import asyncio
 import re
 import math
@@ -42,7 +37,6 @@ async def click_in_phantom(browser, text, delay_multi = 1.0):
 
 
     if phantom_page:
-    
         # check is required enter passowd
 
         # try:
@@ -61,8 +55,7 @@ async def click_in_phantom(browser, text, delay_multi = 1.0):
         #         await browser.just_wait(int(3*delay_multi), int(7*delay_multi))
         # except:
         #     await browser.just_wait(int(3*delay_multi), int(7*delay_multi))
-        # by Aer025x
-		
+
 
         await browser.just_wait(1,1)
 
@@ -299,7 +292,7 @@ async def main(id, wallet, todo):
         await browser.get(random.choice(RANDOM_START_PAGE))
 
 
-        # placing order by A3ro25x
+        # placing order
         if SHOW_MOVEMENT_LOGS<=1:
             logme(f"[{browser.uid}]: Placing Orders")
 
@@ -430,7 +423,7 @@ async def main(id, wallet, todo):
                             private_key=wallet['evm_privateKey'],
                             amount_eth=round(random.uniform(task['min_amount'], task['max_amount']), 16),
                             solana_address=wallet['address'],
-                            provider_url="REPLACEME"  # UPDATE TO BASE RPC
+                            provider_url="https://base-mainnet.g.alchemy.com/"  # UPDATE TO BASE RPC
                         )
                         print(f"Transaction successful with hash: {tx_hash}\n\n\n")
                     except Exception as e:
@@ -440,7 +433,18 @@ async def main(id, wallet, todo):
                     print("Found unknown market id in Send")
 
 
-                break
+                if 'min_delay' in task and 'max_delay' in task:
+                    try:
+                        r_delay = random.randint(task['min_delay'], task['max_delay'])
+                        logme(f"Awaiting for {int(r_delay)}")
+                        await asyncio.sleep(r_delay)
+                    except:
+                        await asyncio.sleep(30)
+                else:
+                    # logme(f"[{browser.uid}]: Task delay is zero:\n\n", "warning")
+                    await asyncio.sleep(30)
+
+                continue
 
 
 
@@ -465,7 +469,7 @@ async def main(id, wallet, todo):
                             logme(f"[{browser.uid}]: Connecting wallet to {task['market_id']}")
 
                         await browser.click_where_button_text("Connect wallet", show_logs=SHOW_MOVEMENT_LOGS, last=True)
-                        await browser.just_wait()
+                        await browser.just_wait(5,6)
                         await browser.make_screenshot(f"[{i_task}] 2. Backpack is corrected to ")
 
                         await browser.click_where_class_text_contains("button", "Solana", show_logs=SHOW_MOVEMENT_LOGS)
@@ -482,6 +486,7 @@ async def main(id, wallet, todo):
 
 
                         if MAKE_HIDDEN:
+                            await browser.just_wait(3, 7)
                             await browser.make_screenshot(f"[{i_task}] 2. Phantom is corrected to {task['market_id']}")
 
                     elif await browser.exists_where_class_text_contains("button", 'Connect Wallet'):
@@ -490,7 +495,7 @@ async def main(id, wallet, todo):
                             logme(f"[{browser.uid}]: Connecting wallet to {task['market_id']}")
 
                         await browser.click_where_button_text("Connect Wallet", show_logs=SHOW_MOVEMENT_LOGS, last=True)
-                        await browser.just_wait()
+                        await browser.just_wait(5,6)
                         await browser.make_screenshot(f"[{i_task}] 2. Backpack is corrected to ")
 
                         await browser.click_where_class_text_contains("button", "Solana", show_logs=SHOW_MOVEMENT_LOGS)
@@ -508,7 +513,9 @@ async def main(id, wallet, todo):
 
 
                         if MAKE_HIDDEN:
+                            await browser.just_wait(3, 7)
                             await browser.make_screenshot(f"[{i_task}] 2. Phantom is corrected to {task['market_id']}")
+
 
 
 
@@ -616,13 +623,13 @@ async def main(id, wallet, todo):
                     await browser.just_wait(30,35)
 
 
-                    H1ddenC0de_balance = await browser.find_p_with_text(r'My balance:\s*.*', show_logs=2, item='div')
-                    if not H1ddenC0de_balance:
+                    available_max_balance2 = await browser.find_p_with_text(r'My balance:\s*.*', show_logs=2, item='div')
+                    if not available_max_balance2:
                         await browser.screenshoot(f"[{browser.uid}]: Failed to found 'My Balance'")
                         logme(f"[{browser.uid}]: Failed to found 'My Balance'")
                         return
 
-                    if H1ddenC0de_balance == available_max_balance:
+                    if available_max_balance2 == available_max_balance:
                         await browser.make_screenshot(f"[{i_task}] Balance failed to to change - {task['market_id']}")
 
                         print(f"[{browser.uid}]: Failed to swap")
@@ -632,24 +639,24 @@ async def main(id, wallet, todo):
 
 
                 elif task['action'] == 'lifinity':
-
+                    await browser.just_wait()
                     all_temp_items = await browser.page.select_all("body > div > div.flex-1 > div > div.flex.justify-center.pt-24 > div > div > div > div.mx-6.mb-2.mt-2.flex.items-center.justify-between.rounded-md.bg-slate-300\/50.px-2.dark\:bg-slate-500\/30 > div > button")
 
                     for item in all_temp_items:
                         await item.click()
 
-                    await browser.just_wait(0.3,0.5)
+                    await browser.just_wait()
 
                     await browser.fast_enter('input[placeholder="Search name or mint address"]', task['token0'])
 
-                    await browser.just_wait(0.3,0.5)
+                    await browser.just_wait()
 
                     if not await browser.click_where_class_text_contains('div.last\:mb-0:nth-child(1) > button', task['token0'], show_logs=SHOW_MOVEMENT_LOGS):
                         logme(f"[{browser.uid}]: failed to click on from token select: {task['token0']}")
                         return
 
 
-                    await browser.just_wait(1,1.5)
+                    await browser.just_wait()
 
                     all_temp_items = await browser.page.select_all("div.mx-6:nth-child(5) > div:nth-child(1) > button:nth-child(1)")
 
@@ -657,18 +664,18 @@ async def main(id, wallet, todo):
                     for item in all_temp_items:
                         await item.click()
 
-                    await browser.just_wait(0.3,0.5)
+                    await browser.just_wait()
 
                     await browser.fast_enter('input[placeholder="Search name or mint address"]', task['token1'])
 
-                    await browser.just_wait(0.3,0.5)
+                    await browser.just_wait()
 
                     if not await browser.click_where_class_text_contains('div.last\:mb-0:nth-child(1) > button', task['token1'], show_logs=SHOW_MOVEMENT_LOGS):
                         logme(f"[{browser.uid}]: failed to click on from token1 select: {task['token1']}")
                         return
 
 
-                    await browser.just_wait(1,1.5)
+                    await browser.just_wait()
 
                     available_max_balance = await browser.find_p_with_text(r'Balance:\s*.*', show_logs=2, item='button.text-gray-500', via_html=True)
                     if not available_max_balance:
@@ -692,13 +699,15 @@ async def main(id, wallet, todo):
                         try:
                             if task['type']=='Buy' and task['token0']=='USDC':
                                 available_max_balance = math.floor(available_max_balance*100)/100
+                            elif task['type']=='Buy' and task['token0']=='SOL':
+                                available_max_balance = math.floor(available_max_balance*100000)/100000
                         except Exception as e:
                             print(e)
                             available_max_balance = 0
 
 
                     if available_max_balance == 0:
-                        print(f"lifinity balance is zero of token {task['token0']} - by HiddenCode")
+                        print(f"lifinity balance is zero of token {task['token0']}")
                         return
 
 
@@ -723,8 +732,8 @@ async def main(id, wallet, todo):
 
 
 
-                    H1ddenC0de_balance = await browser.find_p_with_text(r'Balance:\s*.*', show_logs=2, item='button.text-gray-500', via_html=True)
-                    if not H1ddenC0de_balance:
+                    available_max_balance2 = await browser.find_p_with_text(r'Balance:\s*.*', show_logs=2, item='button.text-gray-500', via_html=True)
+                    if not available_max_balance2:
                         await browser.screenshoot(f"[{browser.uid}]: Failed to found 'Balance'")
                         logme(f"[{browser.uid}]: Failed to found 'Balance'")
                         return
@@ -734,24 +743,26 @@ async def main(id, wallet, todo):
                         # Define a regex pattern to capture the numeric value after 'Balance:'
                         pattern = r'Balance:\s*([\d.]+)'
 
-                        match = re.search(pattern, H1ddenC0de_balance)
+                        match = re.search(pattern, available_max_balance2)
                         if match:
                             balance_str = match.group(1)
-                            H1ddenC0de_balance = float(balance_str)
+                            available_max_balance2 = float(balance_str)
                         else:
-                            H1ddenC0de_balance = 0  # Default value or handle accordingly
+                            available_max_balance2 = 0  # Default value or handle accordingly
 
 
                         try:
                             if task['type']=='Buy' and task['token0']=='USDC':
-                                H1ddenC0de_balance = math.floor(H1ddenC0de_balance*100)/100
+                                available_max_balance = math.floor(available_max_balance*100)/100
+                            elif task['type']=='Buy' and task['token0']=='SOL':
+                                available_max_balance = math.floor(available_max_balance*100000)/100000
                         except Exception as e:
                             print(e)
-                            H1ddenC0de_balance = 0
+                            available_max_balance2 = 0
 
 
 
-                    if H1ddenC0de_balance == available_max_balance:
+                    if available_max_balance2 == available_max_balance:
                         await browser.make_screenshot(f"[{i_task}] Balance failed to to change - {task['market_id']}")
 
                         print(f"[{browser.uid}] Failed to swap")
@@ -765,7 +776,7 @@ async def main(id, wallet, todo):
             if 'min_delay' in task and 'max_delay' in task:
                 try:
                     r_delay = random.randint(task['min_delay'], task['max_delay'])
-                    logme(f"Awaiting for {int(r_delay)} for next step by HiddenCode")
+                    logme(f"Awaiting for {int(r_delay)}")
                     await asyncio.sleep(r_delay)
                 except:
                     await asyncio.sleep(30)
@@ -778,10 +789,3 @@ async def main(id, wallet, todo):
         # Optionally, you can cleanly close the browser after input
 
         await browser.close()
-
-
-
-# Created by Aero25x
-
-# For HiddenCode
-# https://t.me/hidden_coding
