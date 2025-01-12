@@ -78,10 +78,25 @@ def send_native_from_base_to_elcipse(private_key, amount_eth, solana_address,
     print(f"Value (Wei): {value}")
 
     # Define gas fees
-    max_priority_fee = w3.to_wei(max_priority_fee_gwei, 'gwei')
-    max_fee = w3.to_wei(max_fee_gwei, 'gwei')
+    try:
+        latest_block = w3.eth.get_block('latest')
+        base_fee = latest_block.get('baseFeePerGas', w3.to_wei(50, 'gwei'))  # Fallback to 50 gwei if not available
+        max_priority_fee = w3.to_wei(2, 'gwei')  # Reasonable tip
+        max_fee = base_fee + max_priority_fee * 2  # Adding a buffer to ensure transaction inclusion
+    except Exception as e:
+        print(f"Error fetching gas prices: {e}")
+        # Fallback to predefined values if fetching fails
+        max_priority_fee = w3.to_wei(2, 'gwei')
+        max_fee = w3.to_wei(50, 'gwei')
+
+    print(f"Base Fee (Wei): {base_fee}")
     print(f"Max Priority Fee (Wei): {max_priority_fee}")
     print(f"Max Fee (Wei): {max_fee}")
+
+
+    current_gas_price = w3.eth.gas_price  # This gives the current gas price in Wei
+    print(f"Current Gas Price (Wei): {current_gas_price}")
+
 
     # Build the transaction dictionary
     tx = {
